@@ -223,41 +223,28 @@
             }
         }
 
-        /* Mobile Memories Scroll Fix */
+        /* Memories Native Scroll */
         .memories-scroll-container {
             display: flex !important;
             overflow-x: auto !important;
             -webkit-overflow-scrolling: touch !important;
-            scroll-snap-type: x mandatory !important;
-            width: 100vw !important;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            padding: 0 20px;
+            padding: 20px;
+            gap: 20px;
+            width: 100%;
         }
         .memories-scroll-inner {
             display: flex;
-            gap: 1.5rem;
-            min-width: 1000px; /* Force a wide container for mobile scroll */
-            padding-bottom: 20px;
+            gap: 20px;
+            width: max-content;
         }
 
-        /* Timeline Heart Fix */
+        /* Timeline Heart Fixed/Absolute Hybrid */
         .timeline-heart {
-            position: sticky;
-            top: 100px; /* Pin it near the top of the viewport */
-            z-index: 50;
-            height: fit-content;
-        }
-        .timeline-heart-container {
             position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            pointer-events: none;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+            transition: top 0.1s ease-out;
         }
     </style>
 </head>
@@ -633,6 +620,23 @@
                     musicStatus.innerText = 'PLAYING...';
                 }
             };
+        });
+
+        // Mobile Heart Scroll Sync
+        const timeline = document.getElementById('timeline');
+        const balloonContainer = document.getElementById('balloon-container');
+        
+        window.addEventListener('scroll', () => {
+            const timelineRect = timeline.getBoundingClientRect();
+            const timelineTop = timelineRect.top;
+            const timelineHeight = timelineRect.height;
+            
+            // If the timeline is in view
+            if (timelineTop < window.innerHeight && timelineTop + timelineHeight > 0) {
+                // Calculate how much to move the heart (keep it centered in viewport)
+                let newTop = Math.min(Math.max(window.innerHeight / 2 - timelineTop, 50), timelineHeight - 100);
+                balloonContainer.style.top = newTop + 'px';
+            }
         });
     </script>
 </body>
