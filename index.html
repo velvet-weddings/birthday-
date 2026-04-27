@@ -223,6 +223,31 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Mobile Countdown Fix */
+        .countdown-item {
+            min-width: 60px !important;
+        }
+        @media (max-width: 640px) {
+            .countdown-grid {
+                gap: 0.5rem !important;
+                padding: 0 1rem;
+            }
+        }
+
+        /* Mobile Memories Scroll Fix */
+        .memories-scroll-container {
+            -webkit-overflow-scrolling: touch;
+            overflow-x: scroll !important;
+            display: flex !important;
+        }
+
+        /* Timeline Heart Fix */
+        .timeline-heart {
+            position: sticky;
+            top: 40%;
+            z-index: 20;
+        }
     </style>
 </head>
 <body class="min-h-screen pb-32 overflow-x-hidden">
@@ -285,23 +310,23 @@
         <section class="mb-20 flex flex-col items-center gap-6">
             <h2 class="font-headline font-black text-white text-xl tracking-widest bg-black px-4 py-1 rotate-1">COUNTDOWN TO CHAOS</h2>
             
-            <div class="flex gap-2 sm:gap-4 items-center" id="countdown-container">
-                <div class="flex flex-col items-center">
+            <div class="flex gap-1 sm:gap-4 items-center countdown-grid" id="countdown-container">
+                <div class="flex flex-col items-center countdown-item">
                     <div class="dymo-label text-3xl sm:text-4xl font-timer py-3 px-4 min-w-[70px] text-center" id="days">00</div>
                     <span class="font-headline font-black text-[10px] text-white mt-1">DYS</span>
                 </div>
                 <span class="text-white font-black text-3xl mt-[-20px]">:</span>
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center countdown-item">
                     <div class="dymo-label text-3xl sm:text-4xl font-timer py-3 px-4 min-w-[70px] text-center rotate-[-3deg]" id="hours">00</div>
                     <span class="font-headline font-black text-[10px] text-white mt-1">HRS</span>
                 </div>
                 <span class="text-white font-black text-3xl mt-[-20px]">:</span>
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center countdown-item">
                     <div class="dymo-label text-3xl sm:text-4xl font-timer py-3 px-4 min-w-[70px] text-center rotate-[2deg]" id="minutes">00</div>
                     <span class="font-headline font-black text-[10px] text-white mt-1">MIN</span>
                 </div>
                 <span class="text-white font-black text-3xl mt-[-20px]">:</span>
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center countdown-item">
                     <div class="dymo-label text-3xl sm:text-4xl font-timer py-3 px-4 min-w-[70px] text-center rotate-[-1deg] text-pink-500" id="seconds">00</div>
                     <span class="font-headline font-black text-[10px] text-white mt-1">SEC</span>
                 </div>
@@ -312,8 +337,8 @@
             <h2 class="font-headline text-3xl font-black text-black text-center mb-16 sharpie-underline">THE PLAN</h2>
             
             <div class="timeline-line"></div>
-            <div class="timeline-heart-container absolute inset-0 pointer-events-none">
-                <div class="timeline-heart sticky top-1/2 -translate-y-1/2 flex justify-center z-0" id="balloon-container">
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="timeline-heart flex justify-center" id="balloon-container">
                     <div class="bg-red-600 text-white rounded-full p-3 shadow-[4px_4px_0px_black] border-2 border-black rotate-[-5deg]" id="balloon">
                         <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
                     </div>
@@ -352,7 +377,7 @@
             <h2 class="font-headline text-3xl font-black text-white text-center mb-12 sharpie-underline">MEMORIES</h2>
             
             <!-- Horizontal Scroll Container -->
-            <div class="flex overflow-x-auto gap-8 px-8 pb-12 snap-x snap-mandatory no-scrollbar" style="-ms-overflow-style: none; scrollbar-width: none;">
+            <div class="flex overflow-x-auto gap-8 px-8 pb-12 snap-x snap-mandatory no-scrollbar memories-scroll-container" style="-ms-overflow-style: none; scrollbar-width: none;">
                 <style>
                     .no-scrollbar::-webkit-scrollbar { display: none; }
                 </style>
