@@ -641,6 +641,30 @@
                 balloonContainer.style.top = newTop + 'px';
             }
         });
+
+        // Swipe Assist for Memories
+        const scrollContainer = document.querySelector('.memories-scroll-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        scrollContainer.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - scrollContainer.offsetLeft;
+            scrollLeft = scrollContainer.scrollLeft;
+        });
+
+        scrollContainer.addEventListener('touchend', () => {
+            isDown = false;
+        });
+
+        scrollContainer.addEventListener('touchmove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.touches[0].pageX - scrollContainer.offsetLeft;
+            const walk = (x - startX) * 2; // Scroll speed
+            scrollContainer.scrollLeft = scrollLeft - walk;
+        });
     </script>
 </body>
 </html>
