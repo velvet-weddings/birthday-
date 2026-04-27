@@ -223,19 +223,22 @@
             }
         }
 
-        /* Memories Native Scroll */
+        /* Memories Swipe Fix */
         .memories-scroll-container {
-            display: flex !important;
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch !important;
-            padding: 20px;
-            gap: 20px;
             width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 20px;
         }
         .memories-scroll-inner {
             display: flex;
             gap: 20px;
-            width: max-content;
+            padding: 0 20px;
+            width: fit-content;
+        }
+        .polaroid-item {
+            flex: 0 0 280px; /* Force every Polaroid to be 280px wide */
+            scroll-snap-align: center;
         }
 
         /* Timeline Heart Fixed/Absolute Hybrid */
@@ -377,21 +380,21 @@
             <div class="no-scrollbar memories-scroll-container">
                 <div class="memories-scroll-inner">
                     <!-- Polaroid 1 -->
-                    <div class="flex-shrink-0 scrap-paper p-3 pb-12 w-64 transform rotate-[-3deg] relative bg-white shadow-[10px_10px_0px_rgba(0,0,0,0.5)] snap-center">
+                    <div class="polaroid-item flex-shrink-0 scrap-paper p-3 pb-12 w-64 transform rotate-[-3deg] relative bg-white shadow-[10px_10px_0px_rgba(0,0,0,0.5)] snap-center">
                         <div class="absolute -top-4 -left-4 w-16 h-6 scotch-tape rotate-[-15deg]"></div>
                         <img src="Screenshot 2026-04-27 070824.png" class="w-full h-48 object-cover border-2 border-black/10">
                         <p class="absolute bottom-3 left-0 w-full text-center font-handwriting text-xl text-blue-800 font-bold">The OG Crew 💅</p>
                     </div>
 
                     <!-- Polaroid 2 -->
-                    <div class="flex-shrink-0 scrap-paper p-3 pb-12 w-64 transform rotate-[2deg] relative bg-white shadow-[10px_10px_0px_rgba(0,0,0,0.5)] snap-center">
+                    <div class="polaroid-item flex-shrink-0 scrap-paper p-3 pb-12 w-64 transform rotate-[2deg] relative bg-white shadow-[10px_10px_0px_rgba(0,0,0,0.5)] snap-center">
                         <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-20 h-6 scotch-tape"></div>
                         <img src="Screenshot 2026-04-27 070933.png" class="w-full h-48 object-cover border-2 border-black/10">
                         <p class="absolute bottom-3 left-0 w-full text-center font-handwriting text-xl text-blue-800 font-bold">Main Character Energy ✨</p>
                     </div>
 
                     <!-- Polaroid 3 -->
-                    <div class="flex-shrink-0 scrap-paper p-3 pb-12 w-64 transform rotate-[-1deg] relative bg-white shadow-[10px_10px_0px_rgba(0,0,0,0.5)] snap-center">
+                    <div class="polaroid-item flex-shrink-0 scrap-paper p-3 pb-12 w-64 transform rotate-[-1deg] relative bg-white shadow-[10px_10px_0px_rgba(0,0,0,0.5)] snap-center">
                         <div class="absolute -bottom-4 right-4 w-16 h-6 scotch-tape rotate-12"></div>
                         <img src="Screenshot 2026-04-27 071022.png" class="w-full h-48 object-cover border-2 border-black/10">
                         <p class="absolute bottom-3 left-0 w-full text-center font-handwriting text-xl text-blue-800 font-bold">Iconic. Period. 💅</p>
